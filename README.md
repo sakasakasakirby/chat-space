@@ -6,7 +6,8 @@
 |email|string|null: false|
 |password|string|null: false|
 ### Association
-- has_many :groups
+- has_many :members
+- has_many :groups, through: :members
 - has_many :messages
 
 ## groupsテーブル
@@ -14,7 +15,8 @@
 |------|----|-------|
 |name|text||
 ### Association
-- has_many :users
+- has_many :members
+- has_many :users, through: :members
 - has_many :messages
 
 ## membersテーブル
