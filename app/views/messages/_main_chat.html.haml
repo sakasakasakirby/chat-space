@@ -1,1 +1,40 @@
-＜チャット画面＞
+.wrapper__main-chat
+  .wrapper__main-chat__top
+    .wrapper__main-chat__top__center
+      .wrapper__main-chat__top__center__group
+        .wrapper__main-chat__top__center__group__name
+          title
+        .wrapper__main-chat__top__center__group__member
+          %ul.wrapper__main-chat__top__center__group__member__menu
+            %li.wrapper__main-chat__top__center__group__member__name Member : 
+            %li.wrapper__main-chat__top__center__group__member__name name
+      .wrapper__main-chat__top__center__button
+        .wrapper__main-chat__top__center__button__edit
+          = link_to "Edit", "#"
+  .wrapper__main-chat__middle
+    .wrapper__main-chat__middle__block
+      .wrapper__main-chat__middle__block__info
+        .wrapper__main-chat__middle__block__info__name
+          name
+        .wrapper__main-chat__middle__block__info__date
+          2019/11/20(Wed) 17:43:01
+      .wrapper__main-chat__middle__block__message
+        message
+    .wrapper__main-chat__middle__block
+      .wrapper__main-chat__middle__block__info
+        .wrapper__main-chat__middle__block__info__name
+          name
+        .wrapper__main-chat__middle__block__info__date
+          2019/11/20(Wed) 17:43:01
+      .wrapper__main-chat__middle__block__message
+        message
+  .wrapper__main-chat__bottom
+    %form.wrapper__main-chat__bottom__form
+      .wrapper__main-chat__bottom__form__contents
+        %input.wrapper__main-chat__bottom__form__contents__message{"placeholder": "type a message", "type": "text"}
+        .wrapper__main-chat__bottom__form__contents__image
+          %label{class: "wrapper__main-chat__bottom__form__contents__image__icon"}
+            = icon('fas', 'image')
+            %input{type: "file", class: "wrapper__main-chat__bottom__form__contents__image__icon__file"}
+      .wrapper__main-chat__bottom__form__submit
+        %input.wrapper__main-chat__bottom__form__submit__button{"name": "commit", "type": "submit", "value": "Send"}
