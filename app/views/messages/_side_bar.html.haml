@@ -2,11 +2,11 @@
   .wrapper__side-bar__top
     .wrapper__side-bar__top__box
       .wrapper__side-bar__top__box__name
-        name
+        = current_user.name
       .wrapper__side-bar__top__box__icon
         = link_to "#", class: "wrapper__side-bar__top__box__icon__edit" do
           = icon('far', 'edit')
-        = link_to "#", class: "wrapper__side-bar__top__box__icon__cog" do
+        = link_to edit_user_path(current_user), class: "wrapper__side-bar__top__box__icon__cog" do
           = icon('fas', 'cog')
   .wrapper__side-bar__bottom
     .wrapper__side-bar__bottom__list
