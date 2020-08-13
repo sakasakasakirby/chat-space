@@ -4,13 +4,15 @@
       .wrapper__side-bar__top__box__name
         = current_user.name
       .wrapper__side-bar__top__box__icon
-        = link_to "#", class: "wrapper__side-bar__top__box__icon__edit" do
+        = link_to new_group_path, class: "wrapper__side-bar__top__box__icon__edit" do
           = icon('far', 'edit')
         = link_to edit_user_path(current_user), class: "wrapper__side-bar__top__box__icon__cog" do
           = icon('fas', 'cog')
   .wrapper__side-bar__bottom
-    .wrapper__side-bar__bottom__list
-      .wrapper__side-bar__bottom__list__title
-        title
-      .wrapper__side-bar__bottom__list__message
-        まだメッセージはありません
+    - current_user.groups.each do |group|
+      .wrapper__side-bar__bottom__list
+        = link_to '#' do
+          .wrapper__side-bar__bottom__list__title
+            = group.name
+          .wrapper__side-bar__bottom__list__message
+            まだメッセージはありません

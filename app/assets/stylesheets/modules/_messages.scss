@@ -48,7 +48,8 @@ a {
       height: calc(100vh - 100px);
       background-color: #2f3e51;
       display: flex;
-      justify-content: center;
+      flex-direction: column;
+      align-items: center;
       &__list {
         width: 260px;
         height: 91px;
