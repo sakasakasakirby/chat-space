@@ -3,38 +3,25 @@
     .wrapper__main-chat__top__center
       .wrapper__main-chat__top__center__group
         .wrapper__main-chat__top__center__group__name
-          title
+          = @group.name
         .wrapper__main-chat__top__center__group__member
           %ul.wrapper__main-chat__top__center__group__member__menu
             %li.wrapper__main-chat__top__center__group__member__name Member : 
-            %li.wrapper__main-chat__top__center__group__member__name name
+            - @members.each do |member|
+              %li.wrapper__main-chat__top__center__group__member__name 
+                = member
       .wrapper__main-chat__top__center__button
         .wrapper__main-chat__top__center__button__edit
-          = link_to "Edit", "#"
+          = link_to "Edit", edit_group_path(@group.id)
   .wrapper__main-chat__middle
-    .wrapper__main-chat__middle__block
-      .wrapper__main-chat__middle__block__info
-        .wrapper__main-chat__middle__block__info__name
-          name
-        .wrapper__main-chat__middle__block__info__date
-          2019/11/20(Wed) 17:43:01
-      .wrapper__main-chat__middle__block__message
-        message
-    .wrapper__main-chat__middle__block
-      .wrapper__main-chat__middle__block__info
-        .wrapper__main-chat__middle__block__info__name
-          name
-        .wrapper__main-chat__middle__block__info__date
-          2019/11/20(Wed) 17:43:01
-      .wrapper__main-chat__middle__block__message
-        message
+    = render @messages
   .wrapper__main-chat__bottom
-    %form.wrapper__main-chat__bottom__form
+    = form_with model: [@group, @message], html: {class: "wrapper__main-chat__bottom__form"}, local: true do |f|
       .wrapper__main-chat__bottom__form__contents
-        %input.wrapper__main-chat__bottom__form__contents__message{"placeholder": "type a message", "type": "text"}
+        = f.text_field :text, class: 'wrapper__main-chat__bottom__form__contents__message', placeholder: 'type a message'
         .wrapper__main-chat__bottom__form__contents__image
-          %label{class: "wrapper__main-chat__bottom__form__contents__image__icon"}
+          = f.label :image, class: 'wrapper__main-chat__bottom__form__contents__image__icon' do
             = icon('fas', 'image')
-            %input{type: "file", class: "wrapper__main-chat__bottom__form__contents__image__icon__file"}
+            = f.file_field :image, class: 'wrapper__main-chat__bottom__form__contents__image__icon__file'
       .wrapper__main-chat__bottom__form__submit
-        %input.wrapper__main-chat__bottom__form__submit__button{"name": "commit", "type": "submit", "value": "Send"}
+        = f.submit 'Send', class: 'wrapper__main-chat__bottom__form__submit__button'
