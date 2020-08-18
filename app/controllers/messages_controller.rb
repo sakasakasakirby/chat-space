@@ -16,6 +16,11 @@ class MessagesController < ApplicationController
     if @message.save
       redirect_to group_messages_path(@group), notice: 'メッセージが送信されました'
     else
+      @mem = GroupUser.where(group_id: params[:group_id])
+      @members = []
+      @mem.each do | member |
+        @members << User.find(member.user_id).name
+      end
       @messages = @group.messages.includes(:user)
       flash.now[:alert] = 'メッセージを入力してください。'
       render :index
