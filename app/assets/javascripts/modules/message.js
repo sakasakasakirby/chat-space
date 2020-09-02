@@ -1,5 +1,5 @@
 $(function(){
-  
+
   function buildHTML(message){
     if ( message.image ) {
       let html =
@@ -40,15 +40,16 @@ $(function(){
       return html;
     };
   }
-  
+
   $('.wrapper__main-chat__bottom__form').on('submit', function(e){
     e.preventDefault();
     let formData = new FormData(this);
     let url = $(this).attr('action');
+    console.log(formData);
     $.ajax({
       url: url,
       type: 'POST',
-      data: formData,  
+      data: formData,
       dataType: 'json',
       processData: false,
       contentType: false
@@ -65,5 +66,5 @@ $(function(){
     })
   })
 
-  
+
 });
